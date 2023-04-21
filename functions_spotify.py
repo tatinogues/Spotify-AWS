@@ -23,32 +23,45 @@ def get_track_data(n_recs, CLIENT_ID, CLIENT_SECRET):
     n_recs = 100
 
 
-    data_dict = {"id":[], "genre":[], "track_name":[], "artist_name":[],
-             "valence":[], "energy":[], "danceability": [], "key": [], 'loudness': [], 
-             'speechiness':[], 'acousticness': [], 'instrumentalness':[], 'liveness':[], 
-             'tempo':[], "duration_ms": [], "popularity": [], 
-             "audio": []}
+    data_dict = {"id":[], 
+                 "genre":[],
+                 "track_name":[],
+                 "artist_name":[],
+                 "valence":[],
+                 "energy":[], 
+                 "danceability": [],
+                 "key": [],
+                 'loudness': [], 
+                 'speechiness':[],
+                 'acousticness': [],
+                 'instrumentalness':[],
+                 'liveness':[], 
+                 'tempo':[],
+                 "duration_ms": [],
+                 "popularity": [], 
+                 "audio": []}
 
     for g in genres['genres']:
     
         # Get n recommendations
         recs = sp.recommendations(seed_genres = [g], limit = n_recs)
         recs= recs['tracks']
-    
+        n=0
         for track in recs: 
+            n+=1
+            print(track['duration_ms'])
+            print('starting strack ', n, '|'*n)
             data_dict["id"].append(track["id"])
             data_dict["genre"].append(g)
             data_dict["track_name"].append(track['name'])
             data_dict["duration_ms"].append(track['duration_ms'])
             data_dict["popularity"].append(track['popularity'])
             data_dict['audio'].append(track['preview_url'])
-        
-            #Nombre del artista
-            track_meta = sp.track(track["id"])
-            data_dict["artist_name"].append(track_meta['artists'][0]['name'])
-        
-            ##Track detalles de la cancion
+            data_dict["artist_name"].append(track['album']['artists'][0]['name'])
+            print('finished track details I')
+    
             track_features = sp.audio_features(track['id'])
+            print('starting track features')
             data_dict["valence"].append(track_features[0]['valence'])
             data_dict["energy"].append(track_features[0]['energy'])
             data_dict["danceability"].append(track_features[0]['danceability'])
@@ -59,7 +72,8 @@ def get_track_data(n_recs, CLIENT_ID, CLIENT_SECRET):
             data_dict['instrumentalness'].append(track_features[0]['instrumentalness'])
             data_dict['liveness'].append(track_features[0]['liveness'])
             data_dict['tempo'].append(track_features[0]['tempo'])
-        
+            
+            print('finished track features II')
 
             # Wait 0.2 seconds per track so that the api doesnt overheat
             time.sleep(0.2)
