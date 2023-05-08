@@ -1,0 +1,163 @@
+.nav-link {
+    color: white;
+    background-color: black;
+    margin_top
+}
+
+.button {
+  border-radius: 50%}
+h1 {font-size: calc(1.525rem + 3.3vw);
+    font-family: Arial Black;
+}
+
+h6 {
+    font-family: Century Gothic;
+}
+
+h4 {
+    font-family: Century Gothic;
+}
+h3 {
+    font-family: Century Gothic;
+}
+
+.dropdown-class-genre > .Select-control {
+   width:100% !important;
+   border: 2px solid black;
+   #border-radius:20px;
+   background-color:#F8C954;
+}
+
+.dropdown-class-popularity > .Select-control {
+   width:100% !important;
+   border: 2px solid black;
+   #border-radius:20px;
+   background-color:#BB26A4;
+}
+
+.dropdown-class-artist > .Select-control {
+   width:100% !important;
+   border: 2px solid black;
+   #border-radius:20px;
+   background-color:#5B8A93;
+}
+
+.dropdown-class-song > .Select-control {
+   width:100% !important;
+   border: 2px solid black;
+   #border-radius:20px;
+   background-color:#FFA307;
+}
+
+.Select-placeholder {
+    bottom: 0;
+    color: white;}
+
+
+
+
+
+.nav-link.exact{
+    color: white;
+    background-color: black;
+}
+
+
+.DateRangePickerInput_arrow_svg, .DateRangePickerInput_arrow_svg_1 {
+  Height: 15px !important;
+  #Width: 70px !important;
+  FontSize: 20px
+}
+/*table*/
+tr:hover {
+  background-color: #F8C626 !important;
+  border-bottom: 1px solid #F8C626 ;
+  border-top: 1px solid #F8C626 ;
+}
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th {
+    background-color: #423487;
+}
+
+.export{
+    font-size: 0px;
+    position: absolute;
+    bottom: -0.6px;
+    font-type: Roboto;
+    left: 780px;
+    color: #f2f2f2;
+    background-color: #F8C626 !important;
+    border-radius: 8px;
+    padding: 5px;
+    #display: inline-block;
+}.export:before { content: 'Descargar'; font-size: 15px; font-type: Roboto}
+
+{‘selector’:’.dash-spreadsheet-menu’,‘rule’:‘position:absolute;bottom:-30px’}
+
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th.dash-filter input.dash-filter--case--sensitive {
+    border-color: #93c;
+    border-radius: 3px
+px
+;
+    border-style: solid;
+    border-width: 2px;
+    color: #93c;
+}
+/* Calendar date start and end */
+.CalendarDay__selected, .CalendarDay__selected:active, .CalendarDay__selected:hover {
+  background: #2a9fd6 !important;
+  border: 1px double rgb(41, 56, 55) !important;
+  color: rgb(251, 251, 252) !important;
+}
+
+/* Calendar in between start and end date */
+.CalendarDay__selected_span {
+    background: rgb(93, 113, 120) !important;
+    border: 1px double rgb(93, 113, 120) !important;
+    color: rgb(251, 251, 252) !important;
+}
+.DateInput_input {
+    font-weight: 20;
+    font-size: 15px;}
+
+.CalendarDay__selected_span:active, .CalendarDay__selected_span:hover {
+    background: rgb(57, 81, 85) !important;
+    border: 1px double rgb(57, 81, 85) !important;
+    color: rgb(251, 251, 252) !important;
+}
+
+
+
+.dash-table-container .previous-next-container .page-number .current-page-container input.current-page {
+        background-color: #f0e5e5;
+        color: #2a9fd6
+}
+
+.DateInput_input, .DateInput_input_1 {
+  Height: 35px;
+  text-align: center;
+  Width : 171.5px;
+}
+.DateRangePickerInput__withBorder {
+    border-radius: 0px;
+    border: 0px solid #dbdbdb;
+}
+
+
+
+
+/*color de la flecha de la tabla*/
+.dash-table-container .svg-inline--fa{
+        color: #2a9fd6
+}
+.dash-table-container .previous-next-container button.previous-page,
+.dash-table-container .previous-next-container button.next-page,
+.dash-table-container .previous-next-container button.first-page,
+.dash-table-container .previous-next-container button.last-page {
+    background-color: #0000;
+    color: #2a9fd6;
+}
+
+
+
+
+###https://www.tutorialbrain.com/css_tutorial/css_font_family_list/

@@ -1,0 +1,12 @@
+dash
+pandas
+plotly
+dash-auth
+requests
+dash-daq
+dash-html-components==2.0.0
+dash-core-components==2.0.0
+dash-bootstrap-templates
+dash-bootstrap-components
+Flask==2.0.3
+packaging
