@@ -152,14 +152,24 @@ layout = html.Div([
 @callback(
     Output(component_id='plot', component_property='figure'),
     [Input(component_id='filter_genre', component_property='value')],
+    [Input(component_id='filter_artist', component_property='value')]
 )
-def update_graph(selected_genre):
+def update_graph(selected_genre, selected_artist):
 
-    if not selected_genre == ['all_values']:
-        print(selected_genre)
+    if selected_genre != ['all_values'] and selected_artist != ['all_values']:
+        selected_genre = list(selected_genre)
+        selected_artist = list(selected_artist)
+        dff1 = df[df[df.columns[1]].isin(selected_genre)]
+        dff = dff1[dff1[dff1.columns[3]].isin(selected_artist)]
+
+    if selected_genre != ['all_values'] and selected_artist == ['all_values']:
         selected_genre = list(selected_genre)
         dff = df[df[df.columns[1]].isin(selected_genre)]
-        print(len(dff))
+
+    if selected_genre == ['all_values'] and selected_artist != ['all_values']:
+        selected_artist = list(selected_artist)
+        dff = df[df[df.columns[3]].isin(selected_artist)]
+
     else:
         dff = df
 
