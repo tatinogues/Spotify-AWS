@@ -29,7 +29,6 @@ dash.register_page(__name__, path='/ANALYTICS', name='ANALYTICS')
 ##DATA
 df = pd.read_csv('data/scraped_spotify_dataset_new.csv')
 
-
 ##Dropdown
 genre = set(df[df.columns[1]])
 
@@ -150,15 +149,23 @@ layout = html.Div([
 
 @callback(
     Output(component_id='plot', component_property='figure'),
-    [Input(component_id='filter_genre', component_property='value'),
+    [Input(component_id='filter_popularity', component_property='value'),
+     Input(component_id='filter_genre', component_property='value'),
      Input(component_id='filter_artist', component_property='value'),
      Input(component_id='filter_song', component_property='value')]
 )
-def update_graph(selected_genre, selected_artist, selected_song):
-    # no son en conjunto sino que considera que quede en select all uno de ellos y se filtre por el otro
-    # no logre que se filtre por genre y artist a la vez pero funciona :)
+def update_graph(selected_popularity, selected_genre, selected_artist, selected_song):
 
-    if selected_genre != ['all_values']:
+    if selected_popularity == ['Top 100']:
+        dff = df.head(100)
+
+    elif selected_popularity == ['Top 500']:
+        dff = df.head(500)
+
+    elif selected_popularity == ['Top 1000']:
+        dff = df.head(1000)
+
+    elif selected_genre != ['all_values']:
         selected_genre = list(selected_genre)
         dff = df[df[df.columns[1]].isin(selected_genre)]
 
