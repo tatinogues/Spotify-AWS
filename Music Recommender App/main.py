@@ -56,17 +56,17 @@ app.layout = dbc.Container([
             # Use row and col to control vertical alignment of logo / brand
             dbc.Row(
                 [
-                    dbc.Col(html.Img(src=LOGO, height="50px"))
+                    dbc.Col(html.Img(src=LOGO, height="30px"))
                 ],
-                align='Right',
+                align='Left',
                 className="g-0",
             ),
             href="https://www.tixdatascience.com/",
             style={"textDecoration": "none",
                    #'marginLeft': '500px',
-                   'margin-right': '80px',
-                   #'marginTop': '50px',
-                   'margin': '20px'},
+                   'margin-left': '880px',
+                   'marginTop': '90px',
+                   'margin': '100px'},
         ), width=1),
         dbc.Col([nav], align='left', width=6),
     ]),
