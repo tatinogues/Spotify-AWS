@@ -28,8 +28,7 @@ dash.register_page(__name__, path='/ANALYTICS', name='ANALYTICS')
 
 ##DATA
 df = pd.read_csv('data/scraped_spotify_dataset_new.csv')
-df = df.head(100)
-print(df.columns)
+
 
 ##Dropdown
 genre = set(df[df.columns[1]])
@@ -156,10 +155,9 @@ layout = html.Div([
      Input(component_id='filter_song', component_property='value')]
 )
 def update_graph(selected_genre, selected_artist, selected_song):
-    #no son en conjunto sino que considera que quede en select all uno de ellos y se filtre por el otro
-    #no logre que se filtre por genre y artist a la vez pero funciona :)
+    # no son en conjunto sino que considera que quede en select all uno de ellos y se filtre por el otro
+    # no logre que se filtre por genre y artist a la vez pero funciona :)
 
-    
     if selected_genre != ['all_values']:
         selected_genre = list(selected_genre)
         dff = df[df[df.columns[1]].isin(selected_genre)]
