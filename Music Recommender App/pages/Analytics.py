@@ -27,7 +27,7 @@ dash.register_page(__name__, path='/ANALYTICS', name='ANALYTICS')
 ##https://fontawesome.bootstrapcheatsheets.com/
 
 ##DATA
-df = pd.read_csv('data/scraped_spotify_dataset_new.csv')
+df = pd.read_csv('data/scraped_spotify_dataset_ok.csv')
 
 ##Dropdown
 genre = set(df[df.columns[1]])
@@ -180,11 +180,11 @@ def update_graph(selected_popularity, selected_genre, selected_artist, selected_
     else:
         dff = df
 
-    fig = px.scatter(dff, x='valence_standard', y="energy_standard", color='genre',
+    fig = px.scatter(dff, x='valence_standard', y="energy_standard", color='Genre',
                      title="Music Psychology: Valence Arousal Plane",
                      labels={"valence_standard": "</b>Valence</b>",
                              "energy_standard": '</b>Arousal</b>'},
-                     hover_data=["genre", "track_name", "artist_name"],
+                     hover_data=["Genre", "Track", "Artist"],
                      width=1000, height=800,
                      template="plotly_dark",
                      )
