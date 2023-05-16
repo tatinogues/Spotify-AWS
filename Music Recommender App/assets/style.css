@@ -4,6 +4,10 @@
     margin_top
 }
 
+.Select.has-value.Select--single > .Select-control .Select-value .Select-value-label, .Select.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {
+    color: #f9f5f5;
+}
+
 .button {
   border-radius: 50%}
 h1 {font-size: calc(1.525rem + 3.3vw);
@@ -42,15 +46,6 @@ h3 {
    background-color:#5B8A93;
 }
 
-
-
-
-
-.has-value.Select--single>.Select-control .Select-value .Select-value-label, .has-value.is-pseudo-focused.Select--single>.Select-control .Select-value .Select-value-label {
-    color: #f7f4f4;
-}
-
-
 .dropdown-class-popularity > .Select-control {
    width:100% !important;
    border: 2px solid black;
@@ -77,117 +72,49 @@ h3 {
     color: white;}
 
 
-
-
-
 .nav-link.exact{
     color: white;
     background-color: black;
 }
 
 
-.DateRangePickerInput_arrow_svg, .DateRangePickerInput_arrow_svg_1 {
-  Height: 15px !important;
-  #Width: 70px !important;
-  FontSize: 20px
+element.style {
 }
-/*table*/
-tr:hover {
-  background-color: #F8C626 !important;
-  border-bottom: 1px solid #F8C626 ;
-  border-top: 1px solid #F8C626 ;
+.Select, .Select div, .Select input, .Select span {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
-.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th {
-    background-color: #423487;
+.Select, .Select div, .Select input, .Select span {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
-
-.export{
-    font-size: 0px;
+.Select, .Select div, .Select input, .Select span {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.Select, .Select div, .Select input, .Select span {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.Select-placeholder, .Select--single > .Select-control .Select-value {
+    bottom: 0;
+    color: #fff;
+    left: 0;
+    line-height: 34px;
+    padding-left: 10px;
+    padding-right: 10px;
     position: absolute;
-    bottom: -0.6px;
-    font-type: Roboto;
-    left: 780px;
-    color: #f2f2f2;
-    background-color: #F8C626 !important;
-    border-radius: 8px;
-    padding: 5px;
-    #display: inline-block;
-}.export:before { content: 'Descargar'; font-size: 15px; font-type: Roboto}
-
-{‘selector’:’.dash-spreadsheet-menu’,‘rule’:‘position:absolute;bottom:-30px’}
-
-.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th.dash-filter input.dash-filter--case--sensitive {
-    border-color: #93c;
-    border-radius: 3px
-px
-;
-    border-style: solid;
-    border-width: 2px;
-    color: #93c;
-}
-/* Calendar date start and end */
-.CalendarDay__selected, .CalendarDay__selected:active, .CalendarDay__selected:hover {
-  background: #2a9fd6 !important;
-  border: 1px double rgb(41, 56, 55) !important;
-  color: rgb(251, 251, 252) !important;
-}
-
-/* Calendar in between start and end date */
-.CalendarDay__selected_span {
-    background: rgb(93, 113, 120) !important;
-    border: 1px double rgb(93, 113, 120) !important;
-    color: rgb(251, 251, 252) !important;
-}
-.DateInput_input {
-    font-weight: 20;
-    font-size: 15px;}
-
-.CalendarDay__selected_span:active, .CalendarDay__selected_span:hover {
-    background: rgb(57, 81, 85) !important;
-    border: 1px double rgb(57, 81, 85) !important;
-    color: rgb(251, 251, 252) !important;
+    right: 0;
+    top: 0;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 
 
-.dash-table-container .previous-next-container .page-number .current-page-container input.current-page {
-        background-color: #f0e5e5;
-        color: #2a9fd6
-}
-
-.DateInput_input, .DateInput_input_1 {
-  Height: 35px;
-  text-align: center;
-  Width : 171.5px;
-}
-.DateRangePickerInput__withBorder {
-    border-radius: 0px;
-    border: 0px solid #dbdbdb;
-}
-
-.Select--multi .Select-value {
-    background-color: #ebf5ff;
-    background-color: rgba(0,126,255,.08);
-    border-radius: 2px;
-    border: 1px solid #c2e0ff;
-    border: 1px solid rgba(0,126,255,.24);
-    color: #FFFFFF;
-    }
-
-
-/*color de la flecha de la tabla*/
-.dash-table-container .svg-inline--fa{
-        color: #2a9fd6
-}
-.dash-table-container .previous-next-container button.previous-page,
-.dash-table-container .previous-next-container button.next-page,
-.dash-table-container .previous-next-container button.first-page,
-.dash-table-container .previous-next-container button.last-page {
-    background-color: #0000;
-    color: #2a9fd6;
-}
-
-
-
-
-###https://www.tutorialbrain.com/css_tutorial/css_font_family_list/

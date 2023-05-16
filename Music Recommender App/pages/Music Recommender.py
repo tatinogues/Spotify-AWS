@@ -7,6 +7,7 @@ import pandas as pd
 import numpy as np
 from numpy.linalg import norm
 import plotly.express as px
+from dash import dash_table
 
 dash.register_page(__name__, path='/RECOMMENDER', name='MUSIC RECOMMENDER')
 
@@ -32,22 +33,6 @@ dropdown_genre = html.Div([dcc.Dropdown(
            'width': '260px'},
 )
 
-popularity = ['Top 100', 'Top 500', 'Top 1000']
-
-dropdown_popularity = html.Div([dcc.Dropdown(
-    [{'label': 'Select all', 'value': 'all_values'}] + [{'label': x, 'value': x} for x in popularity],
-    value='all-values',
-    placeholder="Filter by Popularity",
-    clearable=True,
-    multi=True,
-    id='filter_popularity',
-    className='dropdown-class-popularity'
-
-)],
-    style={'margin-left': '7px',
-           'color': 'black',
-           'margin-top': '30px',
-           'width': '260px'})
 
 # https://icons.getbootstrap.com/
 # https://symbl.cc/en/collections/emoji/
@@ -81,6 +66,26 @@ dropdown_feeling2 = html.Div([dcc.Dropdown(
            'margin-top': '30px',
            'width': '290px'})
 
+table = dash_table.DataTable(id='table_container',
+                             data=df.to_dict('records'),
+                             columns=[{'id': c, 'name': c} for c in df.columns],
+                             page_current=0,
+                             page_size=10,
+                             page_action="native",
+                             row_selectable="multi",
+                             export_format='xlsx',
+                             selected_columns=[],
+                             selected_rows=[],
+                             style_table={'width': '1020px', 'height': '550px',
+                                          'overflowX': 'auto',
+                                          },
+                             style_as_list_view=True,
+                             style_header={
+                                 'backgroundColor': 'rgb(30, 30, 30)',  # '#2a9fd6'
+                                 'color': 'white',
+                                 'font_family': 'Roboto'}
+                             )
+
 # https://towardsdatascience.com/create-a-professional-dasbhoard-with-dash-and-css-bootstrap-e1829e238fc5
 
 
@@ -88,7 +93,6 @@ layout = html.Div([
     dbc.Row(dcc.Markdown('## **Music Recommender**'),
             align='left',
             style={'fontSize': '18px',
-                   # 'margin': '80px',
                    'marginRight': '100px',
                    'marginLeft': '95px',
                    'marginTop': '18px',
@@ -101,7 +105,6 @@ layout = html.Div([
                              '''),
             align='left',
             style={'fontSize': '20px',
-                   # 'margin': '80px',
                    'marginRight': '120px',
                    'marginLeft': '95px',
                    'marginTop': '8px',
@@ -109,19 +112,15 @@ layout = html.Div([
                    }),
     dbc.Row([dropdown_feeling,
              dropdown_feeling2,
-             # dropdown_popularity,
-             # dropdown_genre,
              ],
             align='left',
-            style={  # 'fontSize': '20px',
-                # 'margin': '80px',
+            style={
                 'margin': '10px',
-                # 'marginLeft': '95px',
-                # 'marginTop': '8px',
                 'color': 'white',
             }
             ),
-    dbc.Row([dcc.Graph(id='plot2')],
+    dbc.Row([dcc.Graph(id='plot2'),
+             table],
             align='center',
             style={
                 'margin': '50px',
@@ -134,7 +133,8 @@ layout = html.Div([
 
 
 @callback(
-    Output(component_id='plot2', component_property='figure'),
+    [Output(component_id='plot2', component_property='figure'),
+     Output(component_id='table_container', component_property='data')],
     Input(component_id='filter_feelings', component_property='value'),
     Input(component_id='filter_feelings2', component_property='value'),
 
@@ -280,4 +280,4 @@ def update_mood(selected_feeling, selected_feeling2):
 
     fig.update_layout(yaxis_range=[-2, 2], xaxis_range=[-2, 2])
 
-    return fig
+    return fig, dff.to_dict('records')
