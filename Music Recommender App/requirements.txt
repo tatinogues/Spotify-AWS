@@ -10,3 +10,4 @@ dash-bootstrap-templates
 dash-bootstrap-components
 Flask==2.0.3
 packaging
+numpy

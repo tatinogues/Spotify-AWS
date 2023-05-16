@@ -8,6 +8,7 @@ from dash_bootstrap_templates import load_figure_template
 VALID_USERNAME_PASSWORD_PAIRS = {
     'tatinogues': '1234',
     'music': 'mood',
+    'roli':'tatinorompas'
 }
 
 app = dash.Dash(__name__, use_pages=True, external_stylesheets=[dbc.themes.CYBORG])
@@ -79,4 +80,6 @@ app.layout = dbc.Container([
 
 # run app
 if __name__ == '__main__':
-    app.run_server(debug=False, host="0.0.0.0", port=8012)
+    app.run_server(debug= False,
+                  # host='00.00.00',
+                   port=8050)

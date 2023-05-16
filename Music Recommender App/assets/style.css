@@ -28,6 +28,29 @@ h3 {
    background-color:#F8C954;
 }
 
+.dropdown-class-feelings > .Select-control {
+   width:100% !important;
+   border: 2px solid black;
+   #border-radius:20px;
+   background-color:#BB26A4;
+}
+
+.dropdown-class-feelings2 > .Select-control {
+   width:100% !important;
+   border: 2px solid black;
+   #border-radius:20px;
+   background-color:#5B8A93;
+}
+
+
+
+
+
+.has-value.Select--single>.Select-control .Select-value .Select-value-label, .has-value.is-pseudo-focused.Select--single>.Select-control .Select-value .Select-value-label {
+    color: #f7f4f4;
+}
+
+
 .dropdown-class-popularity > .Select-control {
    width:100% !important;
    border: 2px solid black;

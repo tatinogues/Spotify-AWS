@@ -1,17 +1,6 @@
-from typing import Any
-import dash
 from dash import Dash, dcc, html, Input, Output, callback, dash_table
-import plotly.express as px
 import pandas as pd
 import dash_bootstrap_components as dbc
-from re import sub
-from decimal import Decimal
-from pandas import Series, DataFrame
-from pandas.core.generic import NDFrame
-import base64
-import datetime
-import io
-
 import dash
 from dash.dependencies import Input, Output, State
 from dash import dcc, html, dash_table
