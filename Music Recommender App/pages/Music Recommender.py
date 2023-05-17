@@ -63,7 +63,12 @@ table = dash_table.DataTable(id='table_container',
                              style_header={
                                  'backgroundColor': 'rgb(30, 30, 30)',  # '#2a9fd6'
                                  'color': 'white',
-                                 'font_family': 'Roboto'}
+                                 'font_family': 'Roboto'},
+                             style_data={
+                                 'backgroundColor': 'rgb(50, 50, 50)',
+                                 'color': '#ADAFAE',
+                                 'font_family': 'Roboto',
+                                 'font_size': '15px'},
                              )
 
 layout = html.Div([

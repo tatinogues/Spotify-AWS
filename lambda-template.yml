@@ -1,0 +1,81 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Resources:
+  LambdaFunction:
+    Type: "AWS::Lambda::Function"
+    Properties:
+      FunctionName: project-spotify-insert-data-template
+      Handler: index.lambda_handler
+      Runtime: python3.8
+      Role: arn:aws:iam::404728616702:role/LabRole
+      Code:
+        ZipFile: |
+          import json
+          import pymysql
+          import sys
+          import rds_config
+          import boto3
+
+          def lambda_handler(event, context):
+              # RDS credentials
+              rds_host = 'spotifydb1.co8a1rkwrsap.us-east-1.rds.amazonaws.com'
+              name = 'admin'
+              password = '1234holasoyhacker'
+              db_name = 'spotidb'
+              port = 3306
+              
+              try:
+                  # Connect to RDS
+                  conn = pymysql.connect(host=rds_host, user=name,
+                                        passwd=password, db=db_name,
+                                        connect_timeout=10,
+                                        cursorclass=pymysql.cursors.DictCursor)
+                  print('Connected to RDS')
+                  
+                  # AWS S3 credentials
+                  s3_bucket_name = 'spotifybucket555555555cbisbenzxbkcdjsljncn'
+                  s3_object_key = 'spotify_tracks.csv.csv'
+                  
+                  # Download CSV file from S3
+                  s3_client = boto3.client('s3')
+                  s3_response = s3_client.get_object(Bucket=s3_bucket_name, Key=s3_object_key)
+                  csv_data = s3_response['Body'].read().decode('utf-8')
+                  
+                  # Parse CSV data
+                  csv_rows = csv_data.split('\n')
+                  csv_rows = [row.strip() for row in csv_rows if row.strip()]
+                  
+                  # Insert data into RDS table
+                  with conn.cursor() as cursor:
+                      for row in csv_rows:
+                          columns = row.split(',')
+                          print('inserted 1 ')
+                          query = """
+                          INSERT INTO spotify_data (id, name, popularity, duration_ms, explicit, artists, id_artists, release_date, danceability, energy, _key,
+                          loudness, mode, speechiness, acousticness, instrumentalness, liveness, valence, tempo, time_signature)
+                          VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                          """
+                          cursor.execute(query, (columns[0], columns[1], columns[2], columns[3], columns[4],
+                                                columns[5], columns[6], columns[7], columns[8], columns[9],
+                                                columns[10], columns[11], columns[12], columns[13], columns[14],
+                                                columns[15], columns[16], columns[17], columns[18], columns[19]))
+                  conn.commit()
+                  
+                  print('Data inserted successfully')
+                  
+              except Exception as e:
+                  print('Error:', str(e))
+                  sys.exit()
+      DeletionPolicy: Retain
+      Layers:
+        - !Ref PyMySQLLayer
+  PyMySQLLayer:
+    Type: "AWS::Lambda::LayerVersion"
+    Properties:
+      LayerName: PyMySQLLayer
+      Description: PyMySQL layer
+      Content:
+        S3Bucket: "py-mysql-layer2"
+        S3Key: "pymysql.zip"
+      CompatibleRuntimes:
+        - python3.8
+      DeletionPolicy: Retain
