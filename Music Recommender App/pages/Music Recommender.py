@@ -13,29 +13,8 @@ dash.register_page(__name__, path='/RECOMMENDER', name='MUSIC RECOMMENDER')
 
 df = pd.read_csv('data/scraped_spotify_dataset_ok.csv')
 df = df.head(500)
-print(df.columns)
 
-genre = set(df[df.columns[1]])
-
-dropdown_genre = html.Div([dcc.Dropdown(
-    [{'label': 'Select all', 'value': 'all_values'}] + [{'label': x, 'value': x} for x in list(genre)],
-    value='all-values',
-    placeholder="Filter by Genres",
-    clearable=True,
-    multi=True,
-    id='filter_genre',
-    className='dropdown-class-genre'
-
-)],
-    style={'margin-left': '7px',
-           'color': 'black',
-           'margin-top': '30px',
-           'width': '260px'},
-)
-
-
-# https://icons.getbootstrap.com/
-# https://symbl.cc/en/collections/emoji/
+#Dropdowns
 feelings = ['😄 Excited', '😊 Happy', '😌 Calm', '😢 Sad', '😨 Distressed', '😴 Sleepy', '😤 Angry', '😬 Nervous']
 
 dropdown_feeling = html.Div([dcc.Dropdown(
@@ -66,6 +45,7 @@ dropdown_feeling2 = html.Div([dcc.Dropdown(
            'margin-top': '30px',
            'width': '290px'})
 
+
 table = dash_table.DataTable(id='table_container',
                              data=df.to_dict('records'),
                              columns=[{'id': c, 'name': c} for c in df.columns],
@@ -86,10 +66,8 @@ table = dash_table.DataTable(id='table_container',
                                  'font_family': 'Roboto'}
                              )
 
-# https://towardsdatascience.com/create-a-professional-dasbhoard-with-dash-and-css-bootstrap-e1829e238fc5
-
-
 layout = html.Div([
+
     dbc.Row(dcc.Markdown('## **Music Recommender**'),
             align='left',
             style={'fontSize': '18px',
@@ -99,6 +77,7 @@ layout = html.Div([
                    'color': 'white',
                    }
             ),
+
     dbc.Row(dcc.Markdown('''
                             ###### Select how you are feeling and how you want to feel and let music do the rest
 
@@ -110,6 +89,7 @@ layout = html.Div([
                    'marginTop': '8px',
                    'color': 'white',
                    }),
+
     dbc.Row([dropdown_feeling,
              dropdown_feeling2,
              ],
@@ -119,6 +99,7 @@ layout = html.Div([
                 'color': 'white',
             }
             ),
+
     dbc.Row([dcc.Graph(id='plot2'),
              table],
             align='center',
@@ -140,7 +121,10 @@ layout = html.Div([
 
 )
 def update_mood(selected_feeling, selected_feeling2):
+
     df["mood_vec"] = df[["valence_standard", "energy_standard"]].values.tolist()
+
+    #base emotions location in the graph
     sad = [-1, -1]
     excited = [0.5, 1.5]
     happy = [1, 0.5]

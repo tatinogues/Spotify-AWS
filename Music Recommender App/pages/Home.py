@@ -2,17 +2,15 @@ import dash
 from dash import Dash, dcc, html, Input, Output, callback
 import dash_bootstrap_components as dbc
 
-dash.register_page(__name__, path='/', name='HOME')  #/ because its the home page
+dash.register_page(__name__, path='/', name='HOME')
 
 button = html.Div(
     [
         dbc.Button(
             "Psychology meets beats",
             href="/ANALYTICS",
-            #download="my_data.txt",
             external_link=False,
             color="warning",
-            #size="lg"
         ),
     ]
 )
@@ -40,7 +38,6 @@ layout = html.Div([
                        }),
 
         dbc.Col(html.A(
-            # Use row and col to control vertical alignment of logo / brand
             dbc.Row(
                 [
                     dbc.Col(html.Img(src=SQUARE, height="600px"))
@@ -50,15 +47,14 @@ layout = html.Div([
             ),
             href="https://www.tixdatascience.com/",
             style={"textDecoration": "none",
-                    'margin-left': '0px',
+                   'margin-left': '0px',
                    'margin-top': '0px'},
         ), width=2)]),
-        dbc.Row(
-            dbc.Col(html.Div(button), width=4, align= 'center',
-                                        style={'margin': '180px',
-                                               'marginTop': '-420px',
-                                               'marginBottom':'10px'})
-        )]
+    dbc.Row(
+        dbc.Col(html.Div(button), width=4, align='center',
+                style={'margin': '180px',
+                       'marginTop': '-420px',
+                       'marginBottom': '10px'})
+    )]
 
 )
-
